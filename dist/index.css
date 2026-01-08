@@ -15,6 +15,48 @@
 :root .k_ui_toggle_switch_bar::after {
   background-color: var(--tweak-bg-secondary);
 }
+:root ._0_k_ui_dropdown_data_list {
+  --padding: 8px;
+  --border-radius: 15px;
+  box-shadow: unset;
+  padding: 0px;
+  margin-top: 8px;
+  border-radius: var(--border-radius);
+  corner-shape: superellipse(1.3);
+}
+@supports (corner-shape: squircle) {
+  :root ._0_k_ui_dropdown_data_list {
+    border-radius: calc(var(--border-radius) * 2) !important;
+    corner-shape: squircle;
+  }
+}
+:root ._0_k_ui_dropdown_data_list .list_items {
+  padding: var(--padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding);
+}
+:root ._0_k_ui_dropdown_data_list .list_items a {
+  margin-top: 0px !important;
+}
+:root ._0_k_ui_dropdown_data_list .nav-item-link {
+  --inner-border-radius: calc(var(--border-radius) - var(--padding));
+  border-radius: var(--inner-border-radius) !important;
+}
+@supports (corner-shape: squircle) {
+  :root ._0_k_ui_dropdown_data_list .nav-item-link {
+    border-radius: calc(var(--inner-border-radius) * 2) !important;
+    corner-shape: squircle;
+  }
+}
+:root ._0_k_ui_dropdown_data_list hr {
+  margin: 0px !important;
+  margin-left: calc(var(--padding) * 2 * -1) !important;
+  margin-right: calc(var(--padding) * 2 * -1) !important;
+  margin-top: 1px !important;
+  margin-bottom: 1px !important;
+  border-style: solid;
+}
 
 :root.theme_light {
   --tweak-bg-primary: #FAF9F5;
@@ -43,6 +85,7 @@
   --inline-domain-tag-bg: var(--tweak-bg-primary);
   --search-result-date-new-bg: var(--tweak-bg-primary);
   --search-result-date-bg: var(--tweak-bg-primary);
+  --related-item-bg: var(--tweak-bg-primary);
 }
 :root.theme_light {
   --primary-visited: color-mix(
@@ -76,6 +119,9 @@
 :root.theme_light .sfi_sep {
   background-color: var(--tweak-bg-tertiary);
 }
+:root.theme_light ._0_k_ui_dropdown_data_list, :root.theme_light ._0_k_ui_dropdown_data_list hr {
+  border-color: var(--tweak-bg-tertiary);
+}
 
 :root.theme_moon_dark {
   --tweak-bg-primary: #1A1A19;
@@ -106,6 +152,7 @@
   --inline-domain-tag-bg: var(--tweak-bg-secondary);
   --search-result-date-new-bg: var(--tweak-bg-secondary);
   --search-result-date-bg: var(--tweak-bg-secondary);
+  --related-item-bg: var(--tweak-bg-secondary);
 }
 :root.theme_moon_dark {
   --primary-visited: color-mix(
@@ -142,6 +189,9 @@
 :root.theme_moon_dark .sfi_sep {
   background-color: var(--tweak-bg-quaternary);
 }
+:root.theme_moon_dark ._0_k_ui_dropdown_data_list, :root.theme_moon_dark ._0_k_ui_dropdown_data_list hr {
+  border-color: var(--tweak-bg-tertiary);
+}
 
 @media (prefers-color-scheme: dark) {
   :root.theme_moon_dark_conditional {
@@ -173,6 +223,7 @@
     --inline-domain-tag-bg: var(--tweak-bg-secondary);
     --search-result-date-new-bg: var(--tweak-bg-secondary);
     --search-result-date-bg: var(--tweak-bg-secondary);
+    --related-item-bg: var(--tweak-bg-secondary);
   }
   :root.theme_moon_dark_conditional {
     --primary-visited: color-mix(
@@ -209,6 +260,9 @@
   :root.theme_moon_dark_conditional .sfi_sep {
     background-color: var(--tweak-bg-quaternary);
   }
+  :root.theme_moon_dark_conditional ._0_k_ui_dropdown_data_list, :root.theme_moon_dark_conditional ._0_k_ui_dropdown_data_list hr {
+    border-color: var(--tweak-bg-tertiary);
+  }
 }
 /*
     To simplify things, we only want padding
@@ -219,15 +273,19 @@
   border-radius: 0px;
 }
 
-.search-input-container._0_search-input-container {
+.search-input-container {
   /*
       Tweaks the padding of the search
       bar to be more proportional.
   */
-  padding-left: 21px;
-  padding-right: 20px;
-  /* A personal preferance */
-  box-shadow: unset;
+  padding-left: 19px !important;
+  padding-right: 19px !important;
+  /* A personal preference */
+  box-shadow: unset !important;
+}
+
+:root ._0_auto-sug .search-input-container {
+  border-top-radius: 500px;
 }
 
 /*
@@ -275,4 +333,59 @@
 */
 .clouds {
   margin-bottom: 35px;
+}
+
+.search-input-container,
+._0_app_theme_switch_box label,
+.k_ui_toggle_switch_bar, .k_ui_toggle_switch_bar::after,
+.btn,
+.__sri-time {
+  corner-shape: superellipse(1.1);
+}
+
+.filter-item,
+._0_quick_answer_trigger_btn {
+  --border-radius: 6px;
+  border-radius: var(--border-radius);
+}
+@supports (corner-shape: squircle) {
+  .filter-item,
+  ._0_quick_answer_trigger_btn {
+    border-radius: calc(var(--border-radius) * 2) !important;
+    corner-shape: squircle;
+  }
+}
+
+.widgetItem,
+.right-content-box img,
+.related-items a {
+  --border-radius: 10px;
+  border-radius: var(--border-radius) !important;
+  overflow: hidden !important;
+}
+@supports (corner-shape: squircle) {
+  .widgetItem,
+  .right-content-box img,
+  .related-items a {
+    border-radius: calc(var(--border-radius) * 2) !important;
+    corner-shape: squircle;
+  }
+}
+
+.related-items {
+  gap: 5px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+}
+.related-items a {
+  width: 100%;
+  margin: 0px !important;
+  padding: 10px;
+  gap: 9px;
+}
+.related-items a svg {
+  margin: 0px !important;
+  width: 18px !important;
+  height: 18px !important;
 }
