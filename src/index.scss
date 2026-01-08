@@ -1,55 +1,74 @@
 @mixin light-theme-vars {
-  & {
-      --tweak-bg-primary: #FAF9F5;
-      --tweak-bg-secondary: #E4E2DE;
-      --tweak-bg-tertiary: #CDCBC8;
-      --tweak-bg-quaternary: #B6B5B1;
-      --tweak-bg-quinary: #A19F9C;
-      --tweak-text-primary: #1D1C1A;
-      --tweak-text-secondary: #595450;
+    & {
+        --tweak-bg-primary: #FAF9F5;
+        --tweak-bg-secondary: #E4E2DE;
+        --tweak-bg-tertiary: #CDCBC8;
+        --tweak-bg-quaternary: #B6B5B1;
+        --tweak-bg-quinary: #A19F9C;
+        --tweak-text-primary: #1D1C1A;
+        --tweak-text-secondary: #595450;
 
-      --landing-bg: var(--tweak-bg-secondary);
-      --color-search-input: var(--tweak-bg-primary);
-      --color-search-input-border: var(--tweak-bg-tertiary);
-      --modal-bg: var(--tweak-bg-primary);
-      --primary-300: var(--tweak-text-secondary);
-      --primary-600: var(--tweak-text-secondary);
-      --primary-800: var(--tweak-text-secondary);
-      --btn-primary-bg: var(--tweak-text-primary);
-      --btn-primary-color: var(--tweak-bg-primary);
-  }
+        --landing-bg: var(--tweak-bg-secondary);
+        --app-frame-bg: var(--tweak-bg-secondary);
+        --color-search-input: var(--tweak-bg-primary);
+        --color-search-input-border: var(--tweak-bg-tertiary);
+        --modal-bg: var(--tweak-bg-primary);
+        --primary-300: var(--tweak-text-secondary);
+        --primary-600: var(--tweak-text-secondary);
+        --primary-800: var(--tweak-text-secondary);
+        --btn-primary-bg: var(--tweak-text-primary);
+        --btn-primary-color: var(--tweak-bg-primary);
+        --inline-widget-bg: var(--tweak-bg-primary);
+        --inline-widget-hover-bg: color-mix(
+            in oklab,
+            var(--inline-widget-bg) 100%,
+            var(--tweak-bg-primary) 50%
+        );
+        --inline-domain-tag-bg: var(--tweak-bg-primary);
+        --search-result-date-new-bg: var(--tweak-bg-primary);
+        --search-result-date-bg: var(--tweak-bg-primary);
+    }
 
-  --primary-visited: color-mix(
-    in oklab,
-    var(--btn-primary-bg) 45%,
-    var(--tweak-accent-primary)
-  );
-  --primary-hover: color-mix(
-    in oklab,
-    var(--btn-primary-bg) 65%,
-    var(--tweak-accent-primary)
-  );
+    --primary-visited: color-mix(
+        in oklab,
+        var(--btn-primary-bg),
+        var(--tweak-accent-primary) 65%
+    );
+    --primary-hover: color-mix(
+        in oklab,
+        var(--btn-primary-bg),
+        var(--tweak-accent-primary) 50%
+    );
 
-  .quick-settings {
-      border-left-color: var(--tweak-bg-tertiaryy);
+    .quick-settings {
+        border-left-color: var(--tweak-bg-tertiary);
 
-      // Divider
-      .qc-sec {
-          border-bottom-color: var(--tweak-bg-tertiary);
-      }
+        // Divider
+        .qc-sec {
+            border-bottom-color: var(--tweak-bg-tertiary);
+        }
 
-      ._0_app_theme_switch_box {
-          label {
-              background-color: var(--tweak-bg-secondary);
-              border-color: var(--tweak-bg-tertiary);
-          }
+        ._0_app_theme_switch_box {
+            label {
+                background-color: var(--tweak-bg-secondary);
+                border-color: var(--tweak-bg-tertiary);
+            }
 
-          input:checked + label {
-              background-color: var(--btn-primary-bg);
-              color: var(--btn-primary-color);
-          }
-      }
-  }
+            input:checked + label {
+                background-color: var(--btn-primary-bg);
+                color: var(--btn-primary-color);
+            }
+        }
+
+        .k_ui_toggle_switch_bar::after {
+            background-color: var(--tweak-bg-primary);
+        }
+    }
+
+    // The seperator between the `Search` and `Clear` icon buttons.
+    .sfi_sep {
+        background-color: var(--tweak-bg-tertiary);
+    }
 }
 
 @mixin dark-theme-vars {
@@ -63,6 +82,7 @@
         --tweak-text-secondary: #ADA6A0;
 
         --landing-bg: var(--tweak-bg-primary);
+        --app-frame-bg: var(--tweak-bg-primary);
         --color-search-input: var(--tweak-bg-secondary);
         --color-search-input-border: var(--tweak-bg-tertiary);
         --modal-bg: var(--tweak-bg-secondary);
@@ -73,6 +93,15 @@
         --primary-800: var(--tweak-text-secondary);
         --btn-primary-bg: var(--tweak-text-primary);
         --btn-primary-color: var(--tweak-bg-primary);
+        --inline-widget-bg: var(--tweak-bg-secondary);
+        --inline-widget-hover-bg: color-mix(
+            in oklab,
+            var(--inline-widget-bg) 100%,
+            var(--tweak-bg-primary) 50%
+        );
+        --inline-domain-tag-bg: var(--tweak-bg-secondary);
+        --search-result-date-new-bg: var(--tweak-bg-secondary);
+        --search-result-date-bg: var(--tweak-bg-secondary);
     }
 
     --primary-visited: color-mix(
@@ -109,6 +138,15 @@
         .k_ui_toggle_switch_bar, .k_ui_toggle_switch_bar::after {
             border-color: var(--tweak-bg-quaternary);
         }
+
+        .k_ui_toggle_switch_bar::after {
+            background-color: var(--tweak-bg-secondary);
+        }
+    }
+
+    // The seperator between the `Search` and `Clear` icon buttons.
+    .sfi_sep {
+        background-color: var(--tweak-bg-quaternary);
     }
 }
 
@@ -130,7 +168,7 @@
         width: calc((var(--knob-size) * 2) + (var(--padding) * 3));
 
         &::after {
-            background-color: var(--tweak-bg-secondary) !important;
+            background-color: var(--tweak-bg-secondary);
         }
     }
 }

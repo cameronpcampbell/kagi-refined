@@ -13,7 +13,7 @@
   width: calc(var(--knob-size) * 2 + var(--padding) * 3);
 }
 :root .k_ui_toggle_switch_bar::after {
-  background-color: var(--tweak-bg-secondary) !important;
+  background-color: var(--tweak-bg-secondary);
 }
 
 :root.theme_light {
@@ -25,6 +25,7 @@
   --tweak-text-primary: #1D1C1A;
   --tweak-text-secondary: #595450;
   --landing-bg: var(--tweak-bg-secondary);
+  --app-frame-bg: var(--tweak-bg-secondary);
   --color-search-input: var(--tweak-bg-primary);
   --color-search-input-border: var(--tweak-bg-tertiary);
   --modal-bg: var(--tweak-bg-primary);
@@ -33,21 +34,30 @@
   --primary-800: var(--tweak-text-secondary);
   --btn-primary-bg: var(--tweak-text-primary);
   --btn-primary-color: var(--tweak-bg-primary);
+  --inline-widget-bg: var(--tweak-bg-primary);
+  --inline-widget-hover-bg: color-mix(
+      in oklab,
+      var(--inline-widget-bg) 100%,
+      var(--tweak-bg-primary) 50%
+  );
+  --inline-domain-tag-bg: var(--tweak-bg-primary);
+  --search-result-date-new-bg: var(--tweak-bg-primary);
+  --search-result-date-bg: var(--tweak-bg-primary);
 }
 :root.theme_light {
   --primary-visited: color-mix(
-    in oklab,
-    var(--btn-primary-bg) 45%,
-    var(--tweak-accent-primary)
+      in oklab,
+      var(--btn-primary-bg),
+      var(--tweak-accent-primary) 65%
   );
   --primary-hover: color-mix(
-    in oklab,
-    var(--btn-primary-bg) 65%,
-    var(--tweak-accent-primary)
+      in oklab,
+      var(--btn-primary-bg),
+      var(--tweak-accent-primary) 50%
   );
 }
 :root.theme_light .quick-settings {
-  border-left-color: var(--tweak-bg-tertiaryy);
+  border-left-color: var(--tweak-bg-tertiary);
 }
 :root.theme_light .quick-settings .qc-sec {
   border-bottom-color: var(--tweak-bg-tertiary);
@@ -60,6 +70,12 @@
   background-color: var(--btn-primary-bg);
   color: var(--btn-primary-color);
 }
+:root.theme_light .quick-settings .k_ui_toggle_switch_bar::after {
+  background-color: var(--tweak-bg-primary);
+}
+:root.theme_light .sfi_sep {
+  background-color: var(--tweak-bg-tertiary);
+}
 
 :root.theme_moon_dark {
   --tweak-bg-primary: #1A1A19;
@@ -70,6 +86,7 @@
   --tweak-text-primary: #FAF7F1;
   --tweak-text-secondary: #ADA6A0;
   --landing-bg: var(--tweak-bg-primary);
+  --app-frame-bg: var(--tweak-bg-primary);
   --color-search-input: var(--tweak-bg-secondary);
   --color-search-input-border: var(--tweak-bg-tertiary);
   --modal-bg: var(--tweak-bg-secondary);
@@ -80,6 +97,15 @@
   --primary-800: var(--tweak-text-secondary);
   --btn-primary-bg: var(--tweak-text-primary);
   --btn-primary-color: var(--tweak-bg-primary);
+  --inline-widget-bg: var(--tweak-bg-secondary);
+  --inline-widget-hover-bg: color-mix(
+      in oklab,
+      var(--inline-widget-bg) 100%,
+      var(--tweak-bg-primary) 50%
+  );
+  --inline-domain-tag-bg: var(--tweak-bg-secondary);
+  --search-result-date-new-bg: var(--tweak-bg-secondary);
+  --search-result-date-bg: var(--tweak-bg-secondary);
 }
 :root.theme_moon_dark {
   --primary-visited: color-mix(
@@ -110,6 +136,12 @@
 :root.theme_moon_dark .quick-settings .k_ui_toggle_switch_bar, :root.theme_moon_dark .quick-settings .k_ui_toggle_switch_bar::after {
   border-color: var(--tweak-bg-quaternary);
 }
+:root.theme_moon_dark .quick-settings .k_ui_toggle_switch_bar::after {
+  background-color: var(--tweak-bg-secondary);
+}
+:root.theme_moon_dark .sfi_sep {
+  background-color: var(--tweak-bg-quaternary);
+}
 
 @media (prefers-color-scheme: dark) {
   :root.theme_moon_dark_conditional {
@@ -121,6 +153,7 @@
     --tweak-text-primary: #FAF7F1;
     --tweak-text-secondary: #ADA6A0;
     --landing-bg: var(--tweak-bg-primary);
+    --app-frame-bg: var(--tweak-bg-primary);
     --color-search-input: var(--tweak-bg-secondary);
     --color-search-input-border: var(--tweak-bg-tertiary);
     --modal-bg: var(--tweak-bg-secondary);
@@ -131,6 +164,15 @@
     --primary-800: var(--tweak-text-secondary);
     --btn-primary-bg: var(--tweak-text-primary);
     --btn-primary-color: var(--tweak-bg-primary);
+    --inline-widget-bg: var(--tweak-bg-secondary);
+    --inline-widget-hover-bg: color-mix(
+        in oklab,
+        var(--inline-widget-bg) 100%,
+        var(--tweak-bg-primary) 50%
+    );
+    --inline-domain-tag-bg: var(--tweak-bg-secondary);
+    --search-result-date-new-bg: var(--tweak-bg-secondary);
+    --search-result-date-bg: var(--tweak-bg-secondary);
   }
   :root.theme_moon_dark_conditional {
     --primary-visited: color-mix(
@@ -160,6 +202,12 @@
   }
   :root.theme_moon_dark_conditional .quick-settings .k_ui_toggle_switch_bar, :root.theme_moon_dark_conditional .quick-settings .k_ui_toggle_switch_bar::after {
     border-color: var(--tweak-bg-quaternary);
+  }
+  :root.theme_moon_dark_conditional .quick-settings .k_ui_toggle_switch_bar::after {
+    background-color: var(--tweak-bg-secondary);
+  }
+  :root.theme_moon_dark_conditional .sfi_sep {
+    background-color: var(--tweak-bg-quaternary);
   }
 }
 /*
