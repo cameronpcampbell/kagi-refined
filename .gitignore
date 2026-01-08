@@ -1,0 +1,6 @@
+# dependencies.
+node_modules
+
+# MacOS file system clutter.
+._*
+.DS_STORE

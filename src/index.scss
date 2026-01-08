@@ -1,0 +1,218 @@
+@mixin light-theme-vars {
+  & {
+      --tweak-bg-primary: #FAF9F5;
+      --tweak-bg-secondary: #E4E2DE;
+      --tweak-bg-tertiary: #CDCBC8;
+      --tweak-bg-quaternary: #B6B5B1;
+      --tweak-bg-quinary: #A19F9C;
+      --tweak-text-primary: #1D1C1A;
+      --tweak-text-secondary: #595450;
+
+      --landing-bg: var(--tweak-bg-secondary);
+      --color-search-input: var(--tweak-bg-primary);
+      --color-search-input-border: var(--tweak-bg-tertiary);
+      --modal-bg: var(--tweak-bg-primary);
+      --primary-300: var(--tweak-text-secondary);
+      --primary-600: var(--tweak-text-secondary);
+      --primary-800: var(--tweak-text-secondary);
+      --btn-primary-bg: var(--tweak-text-primary);
+      --btn-primary-color: var(--tweak-bg-primary);
+  }
+
+  --primary-visited: color-mix(
+    in oklab,
+    var(--btn-primary-bg) 45%,
+    var(--tweak-accent-primary)
+  );
+  --primary-hover: color-mix(
+    in oklab,
+    var(--btn-primary-bg) 65%,
+    var(--tweak-accent-primary)
+  );
+
+  .quick-settings {
+      border-left-color: var(--tweak-bg-tertiaryy);
+
+      // Divider
+      .qc-sec {
+          border-bottom-color: var(--tweak-bg-tertiary);
+      }
+
+      ._0_app_theme_switch_box {
+          label {
+              background-color: var(--tweak-bg-secondary);
+              border-color: var(--tweak-bg-tertiary);
+          }
+
+          input:checked + label {
+              background-color: var(--btn-primary-bg);
+              color: var(--btn-primary-color);
+          }
+      }
+  }
+}
+
+@mixin dark-theme-vars {
+    &{
+        --tweak-bg-primary: #1A1A19;
+        --tweak-bg-secondary: #272726;
+        --tweak-bg-tertiary: #353534;
+        --tweak-bg-quaternary: #444443;
+        --tweak-bg-quinary: #535252;
+        --tweak-text-primary: #FAF7F1;
+        --tweak-text-secondary: #ADA6A0;
+
+        --landing-bg: var(--tweak-bg-primary);
+        --color-search-input: var(--tweak-bg-secondary);
+        --color-search-input-border: var(--tweak-bg-tertiary);
+        --modal-bg: var(--tweak-bg-secondary);
+        --primary: var(--tweak-text-primary);
+        --btn-primary-bg: var(--tweak-text-primary);
+        --primary-300: var(--tweak-text-secondary);
+        --primary-600: var(--tweak-text-secondary);
+        --primary-800: var(--tweak-text-secondary);
+        --btn-primary-bg: var(--tweak-text-primary);
+        --btn-primary-color: var(--tweak-bg-primary);
+    }
+
+    --primary-visited: color-mix(
+      in oklab,
+      var(--btn-primary-bg) 20%,
+      var(--tweak-accent-primary)
+    );
+    --primary-hover: color-mix(
+      in oklab,
+      var(--btn-primary-bg) 40%,
+      var(--tweak-accent-primary)
+    );
+
+    .quick-settings {
+        border-left-color: var(--tweak-bg-tertiary);
+
+        // Divider
+        .qc-sec {
+            border-bottom-color: var(--tweak-bg-tertiary);
+        }
+
+        ._0_app_theme_switch_box {
+            label {
+                background-color: var(--tweak-bg-tertiary);
+                border-color: var(--tweak-bg-quaternary);
+            }
+
+            input:checked + label {
+                background-color: var(--btn-primary-bg);
+                color: var(--btn-primary-color);
+            }
+        }
+
+        .k_ui_toggle_switch_bar, .k_ui_toggle_switch_bar::after {
+            border-color: var(--tweak-bg-quaternary);
+        }
+    }
+}
+
+:root {
+    --tweak-accent-primary: #FFAF00;
+
+    // Changes the accent colors to Kagi's brand color.
+    --purple-600: var(--tweak-accent-primary);
+    --result-item-title-border_hover: color-mix(
+      in oklab,
+      var(--search-result-title) 80%,
+      var(--tweak-accent-primary) 2%
+    );
+
+    .k_ui_toggle_switch_bar {
+        --padding: 2px;
+        padding: var(--padding);
+        // Changes width of toggles to be more proportional.
+        width: calc((var(--knob-size) * 2) + (var(--padding) * 3));
+
+        &::after {
+            background-color: var(--tweak-bg-secondary) !important;
+        }
+    }
+}
+
+:root.theme_light {
+  @include light-theme-vars;
+}
+
+:root.theme_moon_dark {
+  @include dark-theme-vars;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root.theme_moon_dark_conditional {
+    @include dark-theme-vars;
+  }
+}
+
+/*
+    To simplify things, we only want padding
+    on the search bar's outer element.
+*/
+.search-input.search_area._0_search_input_field {
+    padding-left: 0px;
+    border-radius: 0px;
+}
+
+.search-input-container._0_search-input-container {
+    /*
+        Tweaks the padding of the search
+        bar to be more proportional.
+    */
+    padding-left: 21px;
+    padding-right: 20px;
+
+    /* A personal preferance */
+    box-shadow: unset;
+}
+
+/*
+    Increases the spacing between the
+    `Search` and `Clear Text` buttons.
+*/
+.search-form-icons._0_search_form_icons {
+    gap: 10px;
+}
+
+/*
+    We want the search icon's width to only be as wide
+    as the icon to ensure the icon is properly aligned.
+*/
+.search-form .search-form-icons button {
+    width: unset;
+}
+
+/*
+    Since we reduced the width of the search icon,
+    we now less leeway in regards to pressing it.
+    To rectify this we add an absolute positioned
+    psuedo element to increase the search icon's bounds.
+*/
+.search-form .search-form-icons button::before {
+    content: "";
+    position: inline-block;
+    position: absolute;
+    height: 100%;
+    aspect-ratio: 1;
+}
+
+/*
+    Changes the "Search Options" button to be center aligned.
+*/
+.land_adv_search_btn {
+    width: 100%;
+    justify-content: center;
+    right: 0px;
+    top: 15px;
+}
+
+/*
+    Increases the padding between the Kagi logo and the search input.
+*/
+.clouds {
+    margin-bottom: 35px;
+}
