@@ -322,10 +322,11 @@
     Changes the "Search Options" button to be center aligned.
 */
 .land_adv_search_btn {
-  width: 100%;
-  justify-content: center;
-  right: 0px;
+  width: fit-content;
+  position: absolute;
+  left: 50%;
   top: 15px;
+  transform: translate(-50%, 100%);
 }
 
 /*
