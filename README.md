@@ -1,4 +1,4 @@
-# Kagi Plus
+# Kagi Refined
 
 A modern and warm css theme for Kagi.
 
